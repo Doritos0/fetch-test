@@ -71,7 +71,7 @@ function App() {
       {/* Mostrar los datos solo si ya se cargaron */}
       {pokemon && !cargando && (
         <div>
-          <h2>{pokemon.name}</h2>
+          <h2>{pokemon.name.toUpperCase()}</h2>
           <img
             src={pokemon.sprites.front_default}
             alt={pokemon.name}
