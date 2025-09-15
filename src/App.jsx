@@ -3,7 +3,10 @@ import './App.css'
 
 function App() {
 
-  const [pokemon, setPokemon] = useState(null)
+  const [pokemon, setPokemon] = useState(() =>{
+    const pokemonFromLocal = window.localStorage.getItem('pokemon_save')
+    return pokemonFromLocal ? JSON.parse(pokemonFromLocal) : null
+  })
 
   const [error, setError] = useState(null)
 
@@ -22,6 +25,7 @@ function App() {
       .then(response => response.json())
       .then(data => {
         setPokemon(data)
+        window.localStorage.setItem('pokemon_save', JSON.stringify(data))
         console.log("se ejecuta funcion obtenerDatos()")
       })
       .catch(error =>
@@ -56,6 +60,7 @@ function App() {
           setInput('')
           setCargando(false)
           setError(null)
+          window.localStorage.removeItem('pokemon_save')
         }} className='clean' >Limpiar Datos</button>
 
       </section>
