@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       <section>
-        <h1>Prueba Tecnica</h1>
+        <h1>Busca un Pokemon</h1>
         <h3>Fetch de Datos - Test</h3>
         <input
           type="text"
@@ -76,6 +76,7 @@ function App() {
             src={pokemon.sprites.front_default}
             alt={pokemon.name}
           />
+          <h3>Tipo: { pokemon.types[0].type.name }</h3>
         </div>
       )}
       {
